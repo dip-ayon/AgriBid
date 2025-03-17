@@ -11,26 +11,211 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <!-- External CSS -->
     <link href="style.css" rel="stylesheet" />
+     <!-- Favicon -->
+     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg" />
+     <!-- Template CSS -->
+     <!-- <link rel="stylesheet" href="assets/css/plugins/animate.min.css" />
+     <link rel="stylesheet" href="assets/css/main.css?v=6.1" /> -->
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">AgriBids</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="buyersDashboard.html">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Notifications</a>
-                </li>
-            </ul>
+     <!-- Modal -->
+     <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body">
+                    <div class="deal" style="background-image: url('assets/imgs/banner/popup-1.png')">
+                        <div class="deal-top">
+                            <h6 class="mb-10 text-brand-2">Deal of the Day</h6>
+                        </div>
+                        <div class="deal-content ">
+                            <h4 class="product-title">Organic fruit for your family's health</h4>
+                           
+                        </div>
+                        <div class="deal-bottom">
+                            <p class="mb-20">Hurry Up! Bidding End Today</p>
+                            
+                           
+                            <a href="#" class="btn btn-success">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
+    <header>
+        <div class="header-top header-top-ptb-1 d-none d-lg-block">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-xl-4 col-lg-4">
+                        <div class="header-info">
+                            <ul>
+                                <li><a href="">About Us</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="#">Order Tracking</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-4">
+                        <div class="text-center">
+                            <div id="news-flash" class="d-inline-block">
+                                <ul>
+                                    <li>100% Secure delivery without contacting the courier</li>
+                                    <li>Supper Value Deals - Save more with coupons</li>
+                                    <li>Trendy 25silver jewelry, save up 35% off today</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="header-info header-info-right">
+                            <ul>
+                                <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                                
+                               
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">AgriBids</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="buyersDashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notifications</a>
+                    </li>
+                    <li>
+                        <div >
+                            <div>
+                                <form action="#">
+                                    <select class="select-active">
+                                        <option>All Categories</option>
+                                        <option>Milks and Dairies</option>
+                                        <option>Wines & Alcohol</option>
+                                        <option>Clothing & Beauty</option>
+                                        <option>Pet Foods & Toy</option>
+                                        <option>Fast food</option>
+                                        <option>Baking material</option>
+                                        <option>Vegetables</option>
+                                        <option>Fresh Seafood</option>
+                                        <option>Noodles & Rice</option>
+                                        <option>Ice cream</option>
+                                    </select>
+                                    <input type="text" placeholder="Search for items..." />
+                                </form>
+                            </div>
+                    </li>
 
+                        
+
+                </ul>
+                
+            </div>
+            
+        </nav>
+    
+    </header>
+    <div>
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="assets/imgs/slider/slider-1.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="slider-content">
+                        <h1 class="display-2 mb-40 ">
+                            Don’t miss amazing<br />
+                            grocery deals
+                        </h1>
+                        <p class="mb-65">Sign up for the daily newsletter</p>
+                        <form class="form-subcriber d-flex">
+                            <input type="email" placeholder="Your emaill address" />
+                            <button class="btn" type="submit">Subscribe</button>
+                        </form>
+                    </div>
+              </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="assets/imgs/slider/slider-2.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="slider-content">
+                    <h1 class="display-2 mb-40 ">Second slide label</h1>
+                    <p>Some representative placeholder content for the second slide.</p>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+       
+    </div>
+   
+    
     <!-- Main Container -->
     <div class="container mt-5">
+        <span class="text-center">
+            <h5>Top Farms</h5>
+        </span>
+        <div class="row row-cols-1 row-cols-md-6 g-4">
+            <div class="col">
+              <div class="card h-100">
+                <img src="images/user.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Fortune Agro</h5>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                  <img src="images/user.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Fortune Agro</h5>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100">
+                  <img src="images/user.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Fortune Agro</h5>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100">
+                  <img src="images/user.png" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Fortune Agro</h5>
+                    
+                  </div>
+                </div>
+              </div>
+          </div>
+          <span>
+            <br>
+            <br>
+          </span>
         <div class="row">
             <!-- Cart Section -->
             <div class="col-md-2 mb-2" id="cartSection">
@@ -309,6 +494,30 @@
             }
         }
     </script>
+
+    <!-- Vendor JS-->
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/plugins/slick.js"></script>
+    <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="assets/js/plugins/waypoints.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.js"></script>
+    <script src="assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/plugins/select2.min.js"></script>
+    <script src="assets/js/plugins/counterup.js"></script>
+    <script src="assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="assets/js/plugins/images-loaded.js"></script>
+    <script src="assets/js/plugins/isotope.js"></script>
+    <script src="assets/js/plugins/scrollup.js"></script>
+    <script src="assets/js/plugins/jquery.vticker-min.js"></script>
+    <script src="assets/js/plugins/jquery.theia.sticky.js"></script>
+    <script src="assets/js/plugins/jquery.elevatezoom.js"></script>
+    <!-- Template  JS -->
+    <script src="assets/js/main.js?v=6.0"></script>
+    <script src="assets/js/shop.js?v=6.0"></script>
 </body>
 
 </html>
