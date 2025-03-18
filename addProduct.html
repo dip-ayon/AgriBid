@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Farm</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Add Product</h1>
+        <form id="add-product-form" action="#" method="POST" enctype="multipart/form-data">
+
+            <!-- Product Type Selection -->
+            <div class="form-group">
+                <label for="product-type">Select Product Type</label>
+                <select id="product-type" name="product-type" class="form-control" onchange="updateProductNames()">
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="meat">Meat</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+
+            <!-- Product Name Selection (Conditional) -->
+            <div class="form-group">
+                <label for="product-name">Select Product Name</label>
+                <select id="product-name" name="product-name" class="form-control">
+                    <!-- Options will be populated based on product type -->
+                </select>
+            </div>
+
+            <!-- Product Description -->
+            <div class="form-group">
+                <label for="product-description">Product Description</label>
+                <textarea id="product-description" name="product-description" class="form-control" placeholder="Enter Product Description" rows="4"></textarea>
+            </div>
+
+            <!-- Product Quality -->
+            <div class="form-group">
+                <label for="product-quality">Product Quality</label>
+                <select id="product-quality" name="product-quality" class="form-control">
+                    <option value="excellent">Excellent</option>
+                    <option value="good">Good</option>
+                    <option value="average">Average</option>
+                    <option value="fair">Fair</option>
+                </select>
+            </div>
+
+            <!-- Product Packaging -->
+            <div class="form-group">
+                <label for="product-packaging">Packaging Type</label>
+                <select id="product-packaging" name="product-packaging" class="form-control">
+                    <option value="bulk">Bulk</option>
+                    <option value="boxed">Boxed</option>
+                    <option value="bagged">Bagged</option>
+                    <option value="loose">Loose</option>
+                </select>
+            </div>
+
+            <!-- Product Weight -->
+            <div class="form-group">
+                <label for="product-weight">Product Weight (e.g., 1 kg, 5 kg)</label>
+                <input type="text" id="product-weight" name="product-weight" class="form-control" placeholder="Enter weight">
+            </div>
+
+            <!-- Product Price -->
+            <div class="form-group">
+                <label for="product-price">Price (per unit)</label>
+                <input type="text" id="product-price" name="product-price" class="form-control" placeholder="e.g., 20 BDT per kg">
+            </div>
+
+            <!-- Bidding Option -->
+            <div class="form-group">
+                <label for="bidding-option">Selling Method</label><br>
+                <input type="radio" id="bidding" name="selling-method" value="bidding" onclick="toggleBiddingTime(true)"> Bidding
+                <input type="radio" id="fixed-price" name="selling-method" value="fixed-price" checked onclick="toggleBiddingTime(false)"> Fixed Price
+            </div>
+             <!-- Bidding Time (Appears only if Bidding is selected) -->
+             <div class="form-group" id="bidding-time-container" style="display:none;">
+                <label for="bidding-time">Set Bidding Time (in hours)</label>
+                <input type="number" id="bidding-time" name="bidding-time" class="form-control" placeholder="E.g., 24 hours" min="1">
+            </div>
+
+            <!-- Delivery Details -->
+            <div class="form-group">
+                <label for="delivery-details">Delivery Details</label>
+                <input type="text" id="delivery-details" name="delivery-details" class="form-control" placeholder="e.g., Delivery within 3 days">
+            </div>
+
+            <!-- Location -->
+            <div class="form-group">
+                <label for="product-location">Product Location</label>
+                <input type="text" id="product-location" name="product-location" class="form-control" placeholder="Enter Location">
+            </div>
+
+            <!-- Product Image Upload -->
+            <div class="form-group">
+                <label for="product-image">Upload Product Image</label>
+                <input type="file" id="product-image" name="product-image" class="form-control-file" accept="image/*">
+            </div>
+
+            <!-- Video Upload -->
+            <div class="form-group">
+                <label for="product-video">Upload Product Video</label>
+                <input type="file" id="product-video" name="product-video" class="form-control-file" accept="video/*" onchange="previewVideo()">
+            </div>
+
+            <!-- Video Preview -->
+            <video id="video-preview" width="320" height="240" controls style="display:none;">
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success btn-block mt-3">Add Product</button>
+        </form>
+    </div>
+
+    <!-- Link to Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Function to update Product Names based on Product Type
+function updateProductNames() {
+    var productType = document.getElementById("product-type").value;
+    var productNameDropdown = document.getElementById("product-name");
+    productNameDropdown.innerHTML = "";  // Clear current options
+
+    var options = [];
+
+    if (productType == "vegetables") {
+        options = ["Tomatoes", "Potatoes", "Onions", "Carrots", "Cucumbers"];
+    } else if (productType == "fruits") {
+        options = ["Apples", "Bananas", "Oranges", "Mangoes", "Grapes"];
+    } else if (productType == "dairy") {
+        options = ["Milk", "Cheese", "Butter", "Yogurt", "Cream"];
+    } else if (productType == "meat") {
+        options = ["Chicken", "Beef", "Lamb", "Pork"];
+    } else if (productType == "others") {
+        options = ["Other product..."];
+        productNameDropdown.innerHTML = `<input type="text" placeholder="Enter custom product name" id="custom-product-name" />`;
+        return;  // Skip rest if "Others" is selected
+    }
+
+    // Function to toggle the visibility of the bidding time input field
+function toggleBiddingTime(isBiddingSelected) {
+    var biddingTimeContainer = document.getElementById('bidding-time-container');
+    if (isBiddingSelected) {
+        biddingTimeContainer.style.display = 'block';  // Show bidding time field
+    } else {
+        biddingTimeContainer.style.display = 'none';  // Hide bidding time field
+    }
+}
+    // Add the options to the dropdown
+    for (var i = 0; i < options.length; i++) {
+        var option = document.createElement("option");
+        option.text = options[i];
+        option.value = options[i].toLowerCase();
+        productNameDropdown.add(option);
+    }
+}
+
+// Function to Preview Video
+function previewVideo() {
+    var fileInput = document.getElementById('product-video');
+    var videoPreview = document.getElementById('video-preview');
+    var videoSource = document.getElementById('video-source');
+
+    var file = fileInput.files[0];
+
+    if (file) {
+        var fileURL = URL.createObjectURL(file);  // Create an object URL for the uploaded file
+        videoSource.src = fileURL;  // Set the video source to the object URL
+        videoPreview.style.display = 'block';  // Show the video player preview
+        videoPreview.load();  // Load the video for preview
+    } else {
+        videoPreview.style.display = 'none';  // Hide the video player if no file is selected
+    }
+}
+
+// Initial call to populate the first dropdown options
+updateProductNames();
+
+    </script>
+</body>
+</html>
