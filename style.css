@@ -481,3 +481,18 @@
     color: #adadad;
     font-size: 12px;
   }
+  .bid{
+text-align: center;
+  }
+  .bid .add {
+    /* position: ; */
+    display: inline-block;
+    padding: 6px 10px 6px 10px;
+    border-radius: 4px;
+    background-color: #DEF9EC;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .bid input{
+    width: 25px;
+  }
