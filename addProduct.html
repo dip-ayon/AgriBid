@@ -1,192 +1,238 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product - Farm</title>
-    <!-- Link to Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="css/Style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <style>
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2ecc71;
+            --background: #f5f6fa;
+            --text-dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 2rem 0;
+        }
+
+        /* Market Card */
+        .market-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .market-header {
+            border-bottom: 2px solid var(--background);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-table {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .price-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            margin: 3rem 0;
+            height: 400px;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            padding: 2rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Add Product</h1>
-        <form id="add-product-form" action="#" method="POST" enctype="multipart/form-data">
-
-            <!-- Product Type Selection -->
-            <div class="form-group">
-                <label for="product-type">Select Product Type</label>
-                <select id="product-type" name="product-type" class="form-control" onchange="updateProductNames()">
-                    <option value="vegetables">Vegetables</option>
-                    <option value="fruits">Fruits</option>
-                    <option value="dairy">Dairy</option>
-                    <option value="meat">Meat</option>
-                    <option value="others">Others</option>
-                </select>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <!-- <span class="image">
+                    <img src="logo.png" alt="">
+                </span> -->
+                <div class="text logo-text">
+                    <span class="name">AgriBid</span>
+                    <!-- <span class="profession">Web developer</span> -->
+                </div>
             </div>
-
-            <!-- Product Name Selection (Conditional) -->
-            <div class="form-group">
-                <label for="product-name">Select Product Name</label>
-                <select id="product-name" name="product-name" class="form-control">
-                    <!-- Options will be populated based on product type -->
-                </select>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="farmerdashboard.html">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link active">
+                        <a class="active" href="addProduct.html">
+                            <i class='bx bx-add-to-queue icon'></i>
+                            <span class="text nav-text">Add Product</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+                    <li class="nav-link ">
+                        <a class="" href="marketAnalysis.html">
+                            <i class='bx bx-pie-chart-alt icon' ></i>
+                            <span class="text nav-text ">Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon' ></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon' ></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-
-            <!-- Product Description -->
-            <div class="form-group">
-                <label for="product-description">Product Description</label>
-                <textarea id="product-description" name="product-description" class="form-control" placeholder="Enter Product Description" rows="4"></textarea>
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
             </div>
+        </div>
+    </nav>
+    <section class="home">
+        <div class="text">Add Product</div>
+        <div class="container">
 
-            <!-- Product Quality -->
-            <div class="form-group">
-                <label for="product-quality">Product Quality</label>
-                <select id="product-quality" name="product-quality" class="form-control">
-                    <option value="excellent">Excellent</option>
-                    <option value="good">Good</option>
-                    <option value="average">Average</option>
-                    <option value="fair">Fair</option>
-                </select>
-            </div>
+        </div>
+    
 
-            <!-- Product Packaging -->
-            <div class="form-group">
-                <label for="product-packaging">Packaging Type</label>
-                <select id="product-packaging" name="product-packaging" class="form-control">
-                    <option value="bulk">Bulk</option>
-                    <option value="boxed">Boxed</option>
-                    <option value="bagged">Bagged</option>
-                    <option value="loose">Loose</option>
-                </select>
-            </div>
-
-            <!-- Product Weight -->
-            <div class="form-group">
-                <label for="product-weight">Product Weight (e.g., 1 kg, 5 kg)</label>
-                <input type="text" id="product-weight" name="product-weight" class="form-control" placeholder="Enter weight">
-            </div>
-
-            <!-- Product Price -->
-            <div class="form-group">
-                <label for="product-price">Price (per unit)</label>
-                <input type="text" id="product-price" name="product-price" class="form-control" placeholder="e.g., 20 BDT per kg">
-            </div>
-
-            <!-- Bidding Option -->
-            <div class="form-group">
-                <label for="bidding-option">Selling Method</label><br>
-                <input type="radio" id="bidding" name="selling-method" value="bidding" onclick="toggleBiddingTime(true)"> Bidding
-                <input type="radio" id="fixed-price" name="selling-method" value="fixed-price" checked onclick="toggleBiddingTime(false)"> Fixed Price
-            </div>
-             <!-- Bidding Time (Appears only if Bidding is selected) -->
-             <div class="form-group" id="bidding-time-container" style="display:none;">
-                <label for="bidding-time">Set Bidding Time (in hours)</label>
-                <input type="number" id="bidding-time" name="bidding-time" class="form-control" placeholder="E.g., 24 hours" min="1">
-            </div>
-
-            <!-- Delivery Details -->
-            <div class="form-group">
-                <label for="delivery-details">Delivery Details</label>
-                <input type="text" id="delivery-details" name="delivery-details" class="form-control" placeholder="e.g., Delivery within 3 days">
-            </div>
-
-            <!-- Location -->
-            <div class="form-group">
-                <label for="product-location">Product Location</label>
-                <input type="text" id="product-location" name="product-location" class="form-control" placeholder="Enter Location">
-            </div>
-
-            <!-- Product Image Upload -->
-            <div class="form-group">
-                <label for="product-image">Upload Product Image</label>
-                <input type="file" id="product-image" name="product-image" class="form-control-file" accept="image/*">
-            </div>
-
-            <!-- Video Upload -->
-            <div class="form-group">
-                <label for="product-video">Upload Product Video</label>
-                <input type="file" id="product-video" name="product-video" class="form-control-file" accept="video/*" onchange="previewVideo()">
-            </div>
-
-            <!-- Video Preview -->
-            <video id="video-preview" width="320" height="240" controls style="display:none;">
-                <source id="video-source" src="" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-success btn-block mt-3">Add Product</button>
-        </form>
-    </div>
-
-    <!-- Link to Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    </section>
     <script>
-        // Function to update Product Names based on Product Type
-function updateProductNames() {
-    var productType = document.getElementById("product-type").value;
-    var productNameDropdown = document.getElementById("product-name");
-    productNameDropdown.innerHTML = "";  // Clear current options
-
-    var options = [];
-
-    if (productType == "vegetables") {
-        options = ["Tomatoes", "Potatoes", "Onions", "Carrots", "Cucumbers"];
-    } else if (productType == "fruits") {
-        options = ["Apples", "Bananas", "Oranges", "Mangoes", "Grapes"];
-    } else if (productType == "dairy") {
-        options = ["Milk", "Cheese", "Butter", "Yogurt", "Cream"];
-    } else if (productType == "meat") {
-        options = ["Chicken", "Beef", "Lamb", "Pork"];
-    } else if (productType == "others") {
-        options = ["Other product..."];
-        productNameDropdown.innerHTML = `<input type="text" placeholder="Enter custom product name" id="custom-product-name" />`;
-        return;  // Skip rest if "Others" is selected
+        const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+modeSwitch.addEventListener("click" , () =>{
+    body.classList.toggle("dark");
+    
+    if(body.classList.contains("dark")){
+        modeText.innerText = "Light mode";
+    }else{
+        modeText.innerText = "Dark mode";
+        
     }
-
-    // Function to toggle the visibility of the bidding time input field
-function toggleBiddingTime(isBiddingSelected) {
-    var biddingTimeContainer = document.getElementById('bidding-time-container');
-    if (isBiddingSelected) {
-        biddingTimeContainer.style.display = 'block';  // Show bidding time field
-    } else {
-        biddingTimeContainer.style.display = 'none';  // Hide bidding time field
-    }
-}
-    // Add the options to the dropdown
-    for (var i = 0; i < options.length; i++) {
-        var option = document.createElement("option");
-        option.text = options[i];
-        option.value = options[i].toLowerCase();
-        productNameDropdown.add(option);
-    }
-}
-
-// Function to Preview Video
-function previewVideo() {
-    var fileInput = document.getElementById('product-video');
-    var videoPreview = document.getElementById('video-preview');
-    var videoSource = document.getElementById('video-source');
-
-    var file = fileInput.files[0];
-
-    if (file) {
-        var fileURL = URL.createObjectURL(file);  // Create an object URL for the uploaded file
-        videoSource.src = fileURL;  // Set the video source to the object URL
-        videoPreview.style.display = 'block';  // Show the video player preview
-        videoPreview.load();  // Load the video for preview
-    } else {
-        videoPreview.style.display = 'none';  // Hide the video player if no file is selected
-    }
-}
-
-// Initial call to populate the first dropdown options
-updateProductNames();
-
+});
     </script>
+     
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
+
 </html>

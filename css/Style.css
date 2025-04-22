@@ -180,6 +180,13 @@ body.dark .sidebar header .toggle{
 }
 .sidebar li .active{
   background-color: var(--primary-color);
+  
+}
+.sidebar li .active .text{
+  color: var(--sidebar-color);
+}
+.sidebar li .active i{
+  color: var(--sidebar-color);
 }
 
 .sidebar li a:hover .icon,
