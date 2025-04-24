@@ -1,0 +1,600 @@
+/* Style.css - Updated Sidebar */
+:root {
+    /* ===== Colors ===== */
+    --body-color: #f8f9fa;
+    --sidebar-color: #ffffff;
+    --primary-color: #28a745;
+    --primary-color-light: #d4edda;
+    --toggle-color: #ddd;
+    --text-color: #495057;
+    --sidebar-text-color: #343a40;
+    --sidebar-hover-color: rgba(40, 167, 69, 0.1);
+    --sidebar-active-color: #28a745;
+    
+    /* ====== Transition ====== */
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+    
+    /* New variables for cards */
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --card-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    --border-radius: 12px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    padding: 20px 15px;
+    background: var(--sidebar-color);
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
+    transition: var(--tran-05);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar.close {
+    width: 85px;
+}
+
+.sidebar header {
+    position: relative;
+    padding: 0 5px 25px 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar header .image-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar header .logo-text .name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    transition: var(--tran-03);
+}
+
+.sidebar header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 35px;
+    width: 35px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--tran-05);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+}
+
+.sidebar.close .toggle {
+    transform: translateY(-50%) rotate(0deg);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar li {
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    padding: 0 10px;
+    border-radius: var(--border-radius);
+    transition: var(--tran-03);
+}
+
+.sidebar li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--sidebar-text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar li .icon {
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--sidebar-text-color);
+    transition: var(--tran-03);
+}
+
+.sidebar li .text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+    transition: var(--tran-03);
+}
+
+.sidebar.close .text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar li:hover {
+    background-color: var(--sidebar-hover-color);
+}
+
+.sidebar li.active {
+    background-color: var(--sidebar-active-color);
+}
+
+.sidebar li.active .icon,
+.sidebar li.active .text {
+    color: white;
+}
+
+.sidebar li:hover .icon,
+.sidebar li:hover .text {
+    color: var(--primary-color);
+}
+
+.sidebar li.active:hover .icon,
+.sidebar li.active:hover .text {
+    color: white;
+}
+
+/* Main Content */
+.home {
+    
+    padding: 30px;
+    transition: var(--tran-05);
+    min-height: 100vh;
+}
+
+
+
+/* Add-product.css - Enhanced Product Form */
+.product-form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--tran-03);
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--text-color);
+}
+
+/* Product Form Card */
+.product-form-card {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    margin-bottom: 30px;
+    transition: var(--tran-03);
+}
+
+.product-form-card:hover {
+    box-shadow: var(--card-hover-shadow);
+    transform: translateY(-3px);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary-color), #218838);
+    color: white;
+    padding: 20px 25px;
+    border-bottom: none;
+}
+
+.card-header h4 {
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.form-section {
+    padding: 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: white;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+}
+
+.form-section h5 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.form-section h5::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+/* Form Elements */
+.form-control, .form-select {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 15px;
+    height: auto;
+    transition: var(--tran-03);
+    font-size: 0.95rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+.input-group-text {
+    background-color: var(--primary-color-light);
+    color: var(--primary-color);
+    border: 1px solid #e0e0e0;
+    font-weight: 500;
+}
+
+/* Sale Type Cards */
+.sale-type-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.sale-type-card {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--tran-03);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sale-type-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow);
+}
+
+.sale-type-card.active {
+    border-color: var(--primary-color);
+    background: rgba(40, 167, 69, 0.05);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.1);
+}
+
+.sale-type-card .card-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--primary-color-light);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 1.8rem;
+    transition: var(--tran-03);
+}
+
+.sale-type-card.active .card-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+.sale-type-card h5 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.sale-type-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Media Upload */
+.media-upload-card {
+    border-radius: var(--border-radius);
+    padding: 20px;
+    background: white;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 25px;
+}
+
+.form-image-preview {
+    border: 2px dashed #ced4da;
+    border-radius: var(--border-radius);
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    transition: var(--tran-03);
+    cursor: pointer;
+}
+
+.form-image-preview:hover {
+    border-color: var(--primary-color);
+    background: rgba(40, 167, 69, 0.03);
+}
+
+.preview-placeholder {
+    text-align: center;
+    color: var(--text-light);
+}
+
+.preview-placeholder i {
+    color: #adb5bd;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.preview-placeholder p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.preview-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f1f1f1;
+}
+
+.remove-media {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--tran-03);
+    z-index: 10;
+}
+
+.remove-media:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.file-input-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.file-input-group .form-control {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Submit Buttons */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: var(--tran-03);
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+.btn-outline-secondary {
+    border-color: #e0e0e0;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .home {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 85px;
+    }
+    
+    .sidebar .text {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .sidebar.close {
+        width: 0;
+        overflow: hidden;
+    }
+    
+    .sidebar.close ~ .home {
+        margin-left: 0;
+    }
+    
+    .home {
+        margin-left: 85px;
+    }
+    
+    .sale-type-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .home {
+        padding: 20px;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .form-section {
+        padding: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .home {
+        padding: 15px;
+    }
+    
+    .file-input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .file-input-group .form-control {
+        width: 100%;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-form-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Floating action button for mobile */
+.floating-action-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    cursor: pointer;
+    transition: var(--tran-03);
+    display: none;
+}
+
+.floating-action-btn:hover {
+    transform: scale(1.1);
+    background-color: #218838;
+}
+
+@media (max-width: 992px) {
+    .floating-action-btn {
+        display: flex;
+    }
+}
