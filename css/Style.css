@@ -20,11 +20,11 @@
     --tran-04: all 0.3s ease;
     --tran-05: all 0.3s ease;
 }
-body{
-    min-height: 100vh;
+/* body{
+    min-height: ;
     background-color: var(--body-color);
     transition: var(--tran-05);
-}
+} */
 ::selection{
     background-color: var(--primary-color);
     color: #fff;
